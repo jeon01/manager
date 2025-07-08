@@ -18,6 +18,11 @@ public class LoginService {
         System.out.print("비밀번호를 입력하세요: ");
         String password = scanner.nextLine();
 
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        LoginHistoryDAO historyDAO = new LoginHistoryDAO();
+
+        Employee emp = employeeDAO.getEmployeeByIdAndPassword(id, password);
+
             try (Connection con = DBUtil.getConnection()) {
                 String sql = "SELECT NAME FROM EMPLOYEE WHERE EMP_ID = ? AND PASSWORD = ?";
                 PreparedStatement preparedStatement = con.prepareStatement(sql);

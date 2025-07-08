@@ -1,4 +1,3 @@
-// 사원 정보 저장 클래스
 public class Employee {
     private String empid;
     private String name;
