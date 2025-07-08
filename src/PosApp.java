@@ -249,17 +249,21 @@ public class PosApp {
 
         char genderCode = jumin.charAt(6);
         int birthYearPrefix;
-        if (genderCode == '1' || genderCode == '3' || genderCode == '5' || genderCode == '7') {
+        if (genderCode == '1' || genderCode == '2') {
             birthYearPrefix = 1900;
-        } else if (genderCode == '2' || genderCode == '4' || genderCode == '6' || genderCode == '8') {
+        } else if (genderCode == '3' || genderCode == '4') {
             birthYearPrefix = 2000;
+        } else if (genderCode == '5' || genderCode == '6') {
+            birthYearPrefix = 1900; // 외국인
+        } else if (genderCode == '7' || genderCode == '8') {
+            birthYearPrefix = 2000; // 외국인
         } else if (genderCode == '9' || genderCode == '0') {
             birthYearPrefix = 1800;
         } else {
             System.out.println("잘못된 주민등록번호입니다.");
             return -1;
         }
-
+        
         int birthYear = birthYearPrefix + Integer.parseInt(jumin.substring(0, 2));
         int birthMonth = Integer.parseInt(jumin.substring(2, 4));
         int birthDay = Integer.parseInt(jumin.substring(4, 6));
